@@ -1,16 +1,16 @@
 ### Description
 POC for quickly spinning up a kubernetes cluster using ansible and terraform.
 Creates one control-plane and one worker node on Hetzner debian-based instances, 
-using kubeadm and the cri-o container runtime. The point was to see how fast you 
+using kubeadm with CRI-O and Cilium. The point was to see how fast you 
 can spin up an almost-production-ready kubernetes cluster. For me this took less
-than 2 minutes:
+than 3 minutes, including the time it took to install Cilium:
 
 ```bash
 time ./fastkube.sh
 
 ...
 
-./fastkube.sh  4.46s user 1.42s system 5% cpu 1:52.89 total
+./fastkube.sh  6.12s user 1.54s system 5% cpu 2:22.21 total
 ```
 
 ### How to use
