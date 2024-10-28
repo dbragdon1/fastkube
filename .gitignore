@@ -1,3 +1,4 @@
+kubeconfig
 ansible/inventory.ini
 terraform/.terraform/
 terraform/plan
