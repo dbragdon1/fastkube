@@ -146,5 +146,12 @@
     - name: Run kubeadm join command
       command: "{{ hostvars[groups['control_plane'][0]]['KUBEADM_JOIN_CMD'].stdout }}"
 
-
-
+- name: Get kubeconfig
+  hosts: control_plane
+  tasks:
+    - name: Copy admin.conf to localhost
+      fetch:
+        src: "{{ ansible_env.HOME }}/.kube/config"
+        dest: ./kubeconfig
+        flat: yes
+        remote_src: true
