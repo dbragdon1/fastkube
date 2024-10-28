@@ -154,6 +154,6 @@
     - name: Copy admin.conf to localhost
       fetch:
         src: "{{ ansible_env.HOME }}/.kube/config"
-        dest: ./kubeconfig
+        dest: ../kubeconfig
         flat: yes
         remote_src: true
