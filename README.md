@@ -1,7 +1,17 @@
 ### Description
 POC for quickly spinning up a kubernetes cluster using ansible and terraform.
 Creates one control-plane and one worker node on Hetzner debian-based instances, 
-usign kubeadm and the cri-o container runtime
+using kubeadm and the cri-o container runtime. The point was to see how fast you 
+can spin up an almost-production-ready kubernetes cluster. For me this took less
+than 2 minutes:
+
+```bash
+time ./fastkube.sh
+
+...
+
+./fastkube.sh  4.46s user 1.42s system 5% cpu 1:52.89 total
+```
 
 ### How to use
 
@@ -36,5 +46,3 @@ To tear everything down, run:
 
 - The Hetzner instances are currently based in the `us-west` region. You might want to change this to a region closer to you.
 - The Hetzner instances never took longer than a minute to spin up for me, but you may need to tune the configuration of the `wait for nodes to start` step in `./ansible/playbook.yml` if your servers take a particularly long time to spin up.
-
-
