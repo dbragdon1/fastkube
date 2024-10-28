@@ -5,9 +5,12 @@ usign kubeadm and the cri-o container runtime
 
 ### How to use
 
-To spin up the instances and create the kubernetes cluster run:
+To spin up the instances, and create the kubernetes cluster, [create an api token for your hetzner project](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/) and run the following script:
 
 ```bash
+# should be set to the api token you just created
+export HCLOUD_TOKEN="..."
+
 ./fastkube.sh
 ```
 
@@ -28,3 +31,10 @@ To tear everything down, run:
 ```bash
 ./destroy_infra.sh
 ```
+
+### Notes
+
+- The Hetzner instances are currently based in the `us-west` region. You might want to change this to a region closer to you.
+- The Hetzner instances never took longer than a minute to spin up for me, but you may need to tune the configuration of the `wait for nodes to start` step in `./ansible/playbook.yml` if your servers take a particularly long time to spin up.
+
+

@@ -1,5 +1,14 @@
+- name: wait for nodes to start
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Wait for servers to be ready
+      wait_for_connection:
+        delay: 1
+        timeout: 60
+
 - name: setup nodes
-  hosts: control_plane,workers
+  hosts: all
   vars:
     k8s_version: v1.31
     crio_version: v1.30
@@ -136,10 +145,6 @@
       command:
         kubeadm token create --print-join-command
       register: KUBEADM_JOIN_CMD
-    #- name: Display all variables/facts known for a host
-    #  debug:
-    #    var: hostvars[groups['control_plane'][0]]['KUBEADM_JOIN_CMD'].stdout
-    #  tags: debug_info
 - name: Join worker nodes
   hosts: workers
   tasks:

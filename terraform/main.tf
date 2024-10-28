@@ -1,9 +1,4 @@
-variable "hcloud_token" {
-  sensitive = true
-}
-
 provider "hcloud" {
-  token = var.hcloud_token
 }
 
 resource "hcloud_ssh_key" "ssh_key" {
