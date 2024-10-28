@@ -145,6 +145,8 @@
   tasks:
     - name: Run kubeadm join command
       command: "{{ hostvars[groups['control_plane'][0]]['KUBEADM_JOIN_CMD'].stdout }}"
+      args:
+        creates: /etc/kubernetes/pki/ca.crt
 
 - name: Get kubeconfig
   hosts: control_plane
