@@ -46,3 +46,4 @@ To tear everything down, run:
 
 - The Hetzner instances are currently based in the `us-west` region. You might want to change this to a region closer to you.
 - The Hetzner instances never took longer than a minute to spin up for me, but you may need to tune the configuration of the `wait for nodes to start` step in `./ansible/playbook.yml` if your servers take a particularly long time to spin up.
+- In order to avoid interactive events interrupting the `./fastkube.sh` command, `ANSIBLE_HOST_KEY_CHECKING` is set to false while running the ansible playbook (to stop the host key approval prompt from popping up), and the `-auto-approve` flag is turned on when running `terraform apply`.
