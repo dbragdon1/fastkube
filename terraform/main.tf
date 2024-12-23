@@ -3,7 +3,7 @@ provider "hcloud" {
 
 resource "hcloud_ssh_key" "ssh_key" {
   name = "terraform ssh key"
-  public_key = file("~/.ssh/hetzner.pub")
+  public_key = var.ssh_public_key
 }
 
 resource "hcloud_server" "control-plane" {
